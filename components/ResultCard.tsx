@@ -1,5 +1,4 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton'; // Buat skeleton manual jika tidak pakai shadcn
 import FormatButton from './FormatButton';
 import Image from 'next/image';
 
@@ -14,44 +13,37 @@ interface ResultData {
 export default function ResultCard({ data, loading }: { data: ResultData | null; loading: boolean }) {
   if (loading) {
     return (
-      <Card className="w-full max-w-3xl mt-8 bg-white/5 backdrop-blur border-purple-500/20">
-        <CardHeader>
-          <Skeleton className="h-6 w-3/4 bg-purple-500/20" />
-          <Skeleton className="h-4 w-1/4 mt-2 bg-purple-500/20" />
-        </CardHeader>
-        <CardContent>
-          <Skeleton className="h-[200px] w-full rounded-xl bg-purple-500/20" />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-            <Skeleton className="h-10 bg-purple-500/20" />
-            <Skeleton className="h-10 bg-purple-500/20" />
-            <Skeleton className="h-10 bg-purple-500/20" />
-          </div>
-        </CardContent>
-      </Card>
+      <div className="w-full max-w-3xl mt-12 p-8 rounded-2xl bg-neu-bg shadow-neu-out">
+        <div className="h-6 w-3/4 bg-neu-light rounded mb-4 animate-pulse"></div>
+        <div className="h-4 w-1/4 bg-neu-light rounded mb-8 animate-pulse"></div>
+        <div className="h-[250px] w-full rounded-xl bg-neu-light animate-pulse mb-6"></div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="h-12 bg-neu-light rounded-xl animate-pulse"></div>
+          <div className="h-12 bg-neu-light rounded-xl animate-pulse"></div>
+          <div className="h-12 bg-neu-light rounded-xl animate-pulse"></div>
+        </div>
+      </div>
     );
   }
 
   if (!data) return null;
 
   return (
-    <Card className="w-full max-w-3xl mt-8 bg-white/5 backdrop-blur border-purple-500/20 shadow-xl shadow-purple-500/10 rounded-2xl">
-      <CardHeader>
-        <h2 className="text-xl font-bold text-white line-clamp-2">{data.title}</h2>
-        <p className="text-sm text-purple-300 capitalize">{data.platform} • {data.author}</p>
-      </CardHeader>
-      <CardContent>
-        {data.thumbnail && (
-          <div className="relative w-full h-[250px] md:h-[400px] rounded-xl overflow-hidden mb-6 border border-purple-500/20">
-            <Image src={data.thumbnail} alt={data.title} fill className="object-cover" unoptimized />
-          </div>
-        )}
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {data.formats.map((fmt, idx) => (
-            <FormatButton key={idx} quality={fmt.quality} type={fmt.type} url={fmt.url} />
-          ))}
+    <div className="w-full max-w-3xl mt-12 p-8 rounded-2xl bg-neu-bg shadow-neu-out">
+      <h2 className="text-xl font-bold text-white line-clamp-2 mb-1">{data.title}</h2>
+      <p className="text-sm text-gray-400 capitalize mb-6">Platform: {data.platform} • Author: {data.author}</p>
+      
+      {data.thumbnail && (
+        <div className="relative w-full h-[250px] md:h-[400px] rounded-xl overflow-hidden mb-8 shadow-neu-in">
+          <Image src={data.thumbnail} alt={data.title} fill className="object-cover" unoptimized />
         </div>
-      </CardContent>
-    </Card>
+      )}
+      
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {data.formats.map((fmt, idx) => (
+          <FormatButton key={idx} quality={fmt.quality} type={fmt.type} url={fmt.url} />
+        ))}
+      </div>
+    </div>
   );
 }
