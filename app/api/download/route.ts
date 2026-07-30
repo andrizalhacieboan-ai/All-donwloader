@@ -14,12 +14,10 @@ export async function POST(req: Request) {
 
     const platform = detectPlatform(url);
     
-    // Log to database
     try {
       await db.insert(logs).values({ url, platform });
     } catch (dbErr) {
       console.error('DB Log Error:', dbErr);
-      // Lanjutkan walau DB gagal
     }
 
     const info = await getVideoInfo(url);
