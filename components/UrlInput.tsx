@@ -1,10 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Download, Youtube, Instagram, Facebook, Music2, Image as ImageIcon, MessageCircle } from 'lucide-react';
 import ResultCard from './ResultCard';
 import { useHistoryStore } from '@/lib/store';
+import { Youtube, Instagram, Facebook, Music2, Image as ImageIcon, MessageCircle, Download, Link2 } from 'lucide-react';
 
 export default function UrlInput() {
   const [url, setUrl] = useState('');
@@ -47,34 +45,56 @@ export default function UrlInput() {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
-        <Input
-          type="url"
-          placeholder="Paste URL di sini"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          className="flex-1 h-14 text-base bg-white/10 border-purple-500/30 text-white placeholder:text-purple-200/50 focus-visible:ring-purple-500 rounded-xl"
-          required
-        />
-        <Button 
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
+        <div className="relative flex-1">
+          <Link2 className="absolute left-5 top-1/2 -translate-y-1/2 text-neu-orange h-5 w-5" />
+          <input
+            type="url"
+            placeholder="Tempel URL di sini..."
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className="w-full h-16 pl-14 pr-4 text-base text-white bg-neu-bg rounded-2xl shadow-neu-in outline-none placeholder:text-gray-500 focus:ring-1 focus:ring-neu-orange"
+            required
+          />
+        </div>
+        <button 
           type="submit" 
           disabled={loading}
-          className="h-14 px-8 text-base bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-purple-500/30 rounded-xl"
+          className="h-16 px-8 flex items-center justify-center gap-2 text-base font-bold bg-neu-orange text-white rounded-2xl shadow-neu-orange hover:bg-orange-600 transition-all disabled:opacity-50"
         >
-          <Download className="mr-2 h-5 w-5" />
-          Download
-        </Button>
+          <Download className="h-5 w-5" />
+          {loading ? 'Loading...' : 'Download'}
+        </button>
       </form>
 
-      {error && <p className="text-red-400 mt-4 text-center">{error}</p>}
+      {error && <p className="text-red-400 mt-6 text-center">{error}</p>}
 
-      <div className="flex flex-wrap justify-center items-center gap-6 mt-10 opacity-80">
-        <div className="flex flex-col items-center gap-1 text-purple-300"><Youtube className="h-8 w-8" /><span className="text-xs">YouTube</span></div>
-        <div className="flex flex-col items-center gap-1 text-purple-300"><Music2 className="h-8 w-8" /><span className="text-xs">TikTok</span></div>
-        <div className="flex flex-col items-center gap-1 text-purple-300"><Instagram className="h-8 w-8" /><span className="text-xs">Instagram</span></div>
-        <div className="flex flex-col items-center gap-1 text-purple-300"><Facebook className="h-8 w-8" /><span className="text-xs">Facebook</span></div>
-        <div className="flex flex-col items-center gap-1 text-purple-300"><ImageIcon className="h-8 w-8" /><span className="text-xs">Pinterest</span></div>
-        <div className="flex flex-col items-center gap-1 text-purple-300"><MessageCircle className="h-8 w-8" /><span className="text-xs">Threads</span></div>
+      {/* Platform Logos with Brand Colors */}
+      <div className="flex flex-wrap justify-center items-center gap-8 mt-12">
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <Youtube className="h-8 w-8 text-red-600" />
+          <span className="text-xs text-gray-300">YouTube</span>
+        </div>
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <Music2 className="h-8 w-8 text-cyan-400" />
+          <span className="text-xs text-gray-300">TikTok</span>
+        </div>
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <Instagram className="h-8 w-8 text-pink-500" />
+          <span className="text-xs text-gray-300">Instagram</span>
+        </div>
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <Facebook className="h-8 w-8 text-blue-600" />
+          <span className="text-xs text-gray-300">Facebook</span>
+        </div>
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <ImageIcon className="h-8 w-8 text-red-500" />
+          <span className="text-xs text-gray-300">Pinterest</span>
+        </div>
+        <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-neu-bg shadow-neu-sm">
+          <MessageCircle className="h-8 w-8 text-white" />
+          <span className="text-xs text-gray-300">Threads</span>
+        </div>
       </div>
 
       <ResultCard data={result} loading={loading} />
