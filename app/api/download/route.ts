@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const url: string = body.url;
 
     if (!url) {
-      return NextResponse.json({ error: 'URL diperlukan' }, { status: 400 });
+      return NextResponse.json({ error: 'Eh, URL-nya belum diisi nih' }, { status: 400 });
     }
 
     const platform = detectPlatform(url);
