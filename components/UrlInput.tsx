@@ -27,7 +27,7 @@ export default function UrlInput() {
       
       const data = await res.json();
       
-      if (!res.ok) throw new Error(data.error || 'Gagal memproses');
+      if (!res.ok) throw new Error(data.error || 'Waduh, gagal diproses. Coba lagi ya');
       
       setResult(data);
       addHistory({
@@ -50,7 +50,7 @@ export default function UrlInput() {
           <Link2 className="absolute left-5 top-1/2 -translate-y-1/2 text-neu-orange h-5 w-5" />
           <input
             type="url"
-            placeholder="Tempel URL di sini..."
+            placeholder="Paste link-nya di sini gan..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             className="w-full h-16 pl-14 pr-4 text-base text-white bg-neu-bg rounded-2xl shadow-neu-in outline-none placeholder:text-gray-500 focus:ring-1 focus:ring-neu-orange"
@@ -63,7 +63,7 @@ export default function UrlInput() {
           className="h-16 px-8 flex items-center justify-center gap-2 text-base font-bold bg-neu-orange text-white rounded-2xl shadow-neu-orange hover:bg-orange-600 transition-all disabled:opacity-50"
         >
           <Download className="h-5 w-5" />
-          {loading ? 'Loading...' : 'Download'}
+          {loading ? 'Bentar ya...' : 'Download'}
         </button>
       </form>
 
