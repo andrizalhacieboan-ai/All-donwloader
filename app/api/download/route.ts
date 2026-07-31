@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { getVideoInfo, detectPlatform } from '@/lib/downloader';
-import { db } from '@/lib/db';
-import { logs } from '@/lib/schema';
+import { getVideoInfo, detectPlatform } from './lib/downloader.ts';
+import { db } from './lib/db.ts';
+import { logs } from './lib/schema.ts';
 
 export async function POST(req: Request) {
   try {
