@@ -9,7 +9,7 @@ export function History() {
   return (
     <div className="mt-16 w-full max-w-3xl p-6 rounded-2xl bg-neu-bg shadow-neu-out">
       <h3 className="flex items-center gap-2 text-neu-orange font-semibold mb-4">
-        <Clock className="h-5 w-5" /> Riwayat Unduhan
+        <Clock className="h-5 w-5" /> Yang Pernah Kamu Download
       </h3>
       <div className="space-y-3 max-h-[200px] overflow-y-auto pr-2">
         {history.map((item, idx) => (
