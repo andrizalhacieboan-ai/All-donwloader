@@ -1,4 +1,3 @@
-import { Skeleton } from '@/components/ui/skeleton'; // Buat skeleton manual jika tidak pakai shadcn
 import FormatButton from './FormatButton';
 import Image from 'next/image';
 
