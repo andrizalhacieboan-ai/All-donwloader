@@ -31,11 +31,11 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
             Download Video & Audio<br />
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Tanpa Watermark
+              Bebas Watermark
             </span>
           </h2>
           <p className="text-purple-200/70 md:text-lg mb-12 max-w-2xl mx-auto">
-            Dukungan YouTube, TikTok, Instagram, Facebook, Pinterest, dan Threads. Cepat, Gratis, Semua Format.
+            Support YouTube, TikTok, Instagram, Facebook, Pinterest, sama Threads. Tinggal tempel link-nya, beres — gratis, cepet, semua format ada.
           </p>
 
           <UrlInput />
@@ -47,9 +47,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-purple-500/10 py-8 bg-slate-950/50">
         <div className="container mx-auto px-4 text-center text-sm text-purple-200/60">
-          <p className="mb-2">© {new Date().getFullYear()} Ndri All Downloader. All rights reserved.</p>
+          <p className="mb-2">© {new Date().getFullYear()} Ndri All Downloader. Semua hak dilindungi.</p>
           <p className="text-xs max-w-2xl mx-auto">
-            Disclaimer: Website ini hanya untuk download konten dari provider tanpa merugikan developer/CEO. Hormati Hak Cipta. Kami tidak menyimpan file apapun di server kami.
+            Catatan: situs ini cuma buat bantu download konten yang udah tersedia publik, jadi pakainya yang bijak ya. Hargai hak cipta si pembuat konten. Kami nggak nyimpen file kamu di server sama sekali — semuanya lewat aja.
           </p>
         </div>
       </footer>
